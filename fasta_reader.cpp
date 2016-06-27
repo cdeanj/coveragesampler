@@ -17,5 +17,6 @@ std::map<std::string, record> fasta_reader::read() {
 			records.insert(make_pair(gene_id, record(gene, gene.length())));			
 		}
 	}
+	ifs.close();
 	return records;
 }
