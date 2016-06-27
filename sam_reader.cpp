@@ -24,5 +24,6 @@ std::vector<struct alignment> sam_reader::read() {
 			}
 		}
 	}
+	ifs.close();
 	return alignments;
 }
