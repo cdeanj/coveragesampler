@@ -1,11 +1,11 @@
-#include "utility.h"
+#include "utility.hpp"
 #include <stdlib.h>
 #include <sstream>
 #include <string>
 #include <vector>
 
 namespace utility {
-	bool is_good_alignment(const std::string &alignment) {
+	bool is_valid_alignment(std::string &alignment) {
 		std::string field;
 		std::istringstream ss(alignment);
 		std::vector<std::string> parts;
@@ -45,5 +45,30 @@ namespace utility {
 	
 	bool is_good_pos(const int pos) {
 		return pos != 0;
+	}
+
+	void init_alignment(struct alignment *a, const std::string &al) {
+		std::string field;
+		std::istringstream ss(al);
+		std::vector<std::string> parts;
+		while(ss >> field) {
+			parts.push_back(field);
+		}
+		a->flag = atoi(parts[1].c_str());
+		a->pos = atoi(parts[3].c_str());
+		a->rname = parts[3];
+		a->cigar = get_cigar_ops(parts[5]);
+		a->seq = parts[9];
+	}
+
+	std::vector<std::pair<int,char> > get_cigar_ops(const std::string &cigar) {
+		int count;
+		char operation;
+		std::vector<std::pair<int,char> > vp;
+		std::istringstream ss(cigar);
+		while(ss >> count >> operation) {
+			vp.push_back(std::make_pair(count,operation));
+		}
+		return vp;
 	}
 }
