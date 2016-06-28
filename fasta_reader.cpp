@@ -1,4 +1,5 @@
 #include <fstream>
+#include "record.hpp"
 #include "fasta_reader.hpp"
 
 fasta_reader::fasta_reader(std::string fp) : _fp(fp) {}

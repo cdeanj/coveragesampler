@@ -1,13 +1,7 @@
 #include <string>
 #include <vector>
 
-struct alignment {
-	std::string rname;
-	std::vector<std::pair<int,char> > cigar;
-	std::string seq;
-	int pos;
-	int flag;
-};
+#include "alignment.hpp"
 
 namespace utility {
 	bool is_valid_alignment(std::string &alignment);

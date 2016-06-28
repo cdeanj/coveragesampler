@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "alignment.hpp"
 
 using namespace utility;
 

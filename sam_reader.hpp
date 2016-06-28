@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "alignment.hpp"
 #include "utility.hpp"
 
 class sam_reader {

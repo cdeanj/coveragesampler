@@ -1,16 +1,11 @@
 #ifndef FASTA_READER_H
 #define FASTA_READER_H
 
+#include "record.hpp"
+
 #include <vector>
 #include <string>
 #include <map>
-
-class record {
-public:
-	record(std::string g, int n) : gene(g), base_hits(n, 0) {}
-	std::vector<bool> base_hits;
-	std::string gene;
-};
 
 class fasta_reader {
 public:
