@@ -22,14 +22,14 @@ static void usage() {
         fprintf(stderr, "Contact: Chris Dean <cdean11@rams.colostate.edu\n\n");
         fprintf(stderr, "Usage: csa [options]\n\n");
         fprintf(stderr, "Options:\n\n");
-        fprintf(stderr, "    -amr_fp    amr database path\n");
-        fprintf(stderr, "    -sam_fp    sam file path\n");
-        fprintf(stderr, "    -min       starting level\n");
-        fprintf(stderr, "    -max       ending level\n");
-        fprintf(stderr, "    -skip      amount of levels to skip\n");
-        fprintf(stderr, "    -t         gene fraction threshold\n");
-        fprintf(stderr, "    -samples   amount of samples per level\n");
-        fprintf(stderr, "    -out_fp    output file path\n\n");
+        fprintf(stderr, "    -amr_fp    STR/FILE		fasta file path\n");
+        fprintf(stderr, "    -sam_fp    STR/FILE		sam file path\n");
+        fprintf(stderr, "    -min       INT		starting sample level\n");
+        fprintf(stderr, "    -max       INT		ending sample level\n");
+        fprintf(stderr, "    -skip      INT		amount of sample levels to skip\n");
+        fprintf(stderr, "    -t         INT		gene fraction threshold\n");
+        fprintf(stderr, "    -samples   INT		iterations per sample level\n");
+        fprintf(stderr, "    -out_fp    STR/FILE		output file path\n\n");
 }
 
 struct cmd_args 
