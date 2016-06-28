@@ -1,4 +1,5 @@
 #include <fstream>
+#include <stdlib.h>
 #include <iostream>
 #include "record.hpp"
 #include "fasta_reader.hpp"
@@ -8,6 +9,7 @@ fasta_reader::fasta_reader(std::string fp) : _fp(fp) {}
 std::map<std::string, record> fasta_reader::read() {
 	std::ifstream ifs(_fp);
 	if(!ifs) {
+		std::cerr << "Unable to open fasta file" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	std::string gene_id, gene;
