@@ -27,6 +27,6 @@ int main(const int argc, const char *argv[]) {
 
 	sam_ratio ratio(args);
 	ratio.generate_samples(records, alignments);
-
+	
 	return 0;
 }
