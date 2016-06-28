@@ -1,4 +1,4 @@
-Coverage Sampler: A tool for calculating the amount of a gene that is covered by a sample of alignments.
+Coverage Sampler: A simple tool for calculating the amount of a gene that is covered by a sample of alignments.
 
 #### Installation
 ```
@@ -30,7 +30,7 @@ Level   Iteration   Gene Id Gene Fraction   Hits
 ```
 
 * Level: the sampling percent alignments were taken at
-* Iteration: the ith iteration at the current sample level
-* Gene Id: the reference sequence that a sample of alignments aligned to
+* Iteration: the ith iteration of the current sample level
+* Gene Id: the reference sequence having a gene fraction greater than the threshold
 * Gene Fraction: the number of bases covered by the sample of alignments
 * Hits: the number of alignments that had bases cover the reference sequence
