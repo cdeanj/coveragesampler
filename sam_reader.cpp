@@ -1,9 +1,10 @@
 #include "sam_reader.hpp"
+#include "alignment.hpp"
 
 #include <string>
+#include <stdlib.h>
 #include <vector>
 #include <fstream>
-#include "alignment.hpp"
 
 using namespace utility;
 
@@ -12,6 +13,7 @@ sam_reader::sam_reader(std::string fp) : _fp(fp) {}
 std::vector<struct alignment> sam_reader::read() {
 	std::ifstream ifs(_fp);
 	if(!ifs) {
+		std::cerr << "Unable to open sam file" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	std::string line;
