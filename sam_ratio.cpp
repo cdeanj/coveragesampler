@@ -9,11 +9,11 @@
 #include <string>
 #include <cmath>
 
+sam_ratio::sam_ratio(struct cmd_args arguments) : args(arguments) {}
+
 int rando(const int i) {
         return rand() % i;
 }
-
-sam_ratio::sam_ratio(struct cmd_args arguments) : args(arguments) {}
 
 void sam_ratio::write_header(std::string &out_fp) {
 	std::ofstream ofs(out_fp, std::ofstream::app);
@@ -120,7 +120,6 @@ void sam_ratio::generate_samples(std::map<std::string, record> &records, const s
 			}
 			write_results(records, i, j+1, args.out_fp);
 			reset(records);
-			//std::map<std::string, record> &records, const int curr_level, const int curr_iter, std::string &out_fp
 		}
 	}
 }
