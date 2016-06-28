@@ -1,4 +1,5 @@
 #include "args.hpp"
+#include "utility.hpp"
 #include "sam_ratio.hpp"
 
 #include <assert.h>
@@ -11,20 +12,19 @@
 
 sam_ratio::sam_ratio(struct cmd_args arguments) : args(arguments) {}
 
-int rando(const int i) {
-        return rand() % i;
-}
-
-void sam_ratio::write_header(std::string &out_fp) {
-	std::ofstream ofs(out_fp, std::ofstream::app);
+void sam_ratio::write_header() {
+	std::ofstream ofs(args.out_fp, std::ofstream::app);
 	ofs << "Level\tIteration\tGene Id\tGene Fraction\tHits" << '\n';
 	ofs.close();
 }
 
-void sam_ratio::write_results(std::map<std::string, record> &records, const int curr_level, const int curr_iter, std::string &out_fp) {
-	std::ofstream ofs(out_fp, std::ofstream::app);
+void sam_ratio::write_results(std::map<std::string, record> &records, const int curr_level, const int curr_iter) {
+	std::ofstream ofs(args.out_fp, std::ofstream::app);
 	for(auto it = records.begin(); it != records.end(); ++it) {
-		ofs << curr_level << "\t" << curr_iter << "\t" << it->first << "\t" << it->second.coverage() << "\t" << it->second.gene_hits() << "\n";
+		double cov = it->second.coverage();
+		if(cov > args.threshold) {
+			ofs << curr_level << "\t" << curr_iter << "\t" << it->first << "\t" << it->second.coverage() << "\t" << it->second.gene_hits() << "\n";
+		}
 	}
 	ofs.close();	
 }
@@ -107,18 +107,18 @@ void sam_ratio::generate_samples(std::map<std::string, record> &records, const s
 
 	assert(alignments.size() > 0);
 
-	write_header(args.out_fp);
+	write_header();
 
 	for(int i = args.min; i <= args.max; i += args.skip) {
 		for(int j = 0; j < args.s_per_level; j++) {
-			random_shuffle(sequence.begin(), sequence.end(), rando);
+			random_shuffle(sequence.begin(), sequence.end(), utility::rando);
 			int sample_size = round(((static_cast<double>(i)/100)*alignment_count));
 			std::vector<int> chosen(sequence.begin(), sequence.begin()+sample_size);
 			for(int k = 0; k < chosen.size(); k++) {
 				std::string rname = alignments[chosen[k]].rname;
 				analyze_coverage(records.find(rname)->second, alignments[chosen[k]]);
 			}
-			write_results(records, i, j+1, args.out_fp);
+			write_results(records, i, j+1);
 			reset(records);
 		}
 	}

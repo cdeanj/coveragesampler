@@ -28,7 +28,5 @@ int main(const int argc, const char *argv[]) {
 	sam_ratio ratio(args);
 	ratio.generate_samples(records, alignments);
 
-	//cout << records.find("chr2:172936693-172938111")->second.get_gene() << endl;
-
 	return 0;
 }

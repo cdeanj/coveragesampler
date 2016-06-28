@@ -13,8 +13,8 @@ class sam_ratio {
 public:
 	sam_ratio(struct cmd_args arguments);
 	void generate_samples(std::map<std::string, record> &records, const std::vector<struct alignment> &alignments);
-	void write_header(std::string &out_fp);
-	void write_results(std::map<std::string, record> &records, const int curr_level, const int curr_iter, std::string &out_fp);
+	void write_header();
+	void write_results(std::map<std::string, record> &records, const int curr_level, const int curr_iter);
 	void analyze_coverage(record &rec, const alignment &al);
 
 private:

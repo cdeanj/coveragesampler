@@ -47,6 +47,10 @@ namespace utility {
 		return pos != 0;
 	}
 
+	int rando(const int i) {
+        	return rand() % i;
+	}
+
 	void init_alignment(struct alignment *a, const std::string &al) {
 		std::string field;
 		std::istringstream ss(al);
