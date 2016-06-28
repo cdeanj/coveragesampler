@@ -17,7 +17,13 @@ std::map<std::string, record> fasta_reader::read() {
 	while(std::getline(ifs, gene_id)) {
 		if(gene_id[0] == '>') {
 			getline(ifs, gene);
-			gene_id = gene_id.substr(1,gene_id.length()-1);
+			std::size_t gene_idx = gene_id.find(" ");
+                        if(gene_idx != std::string::npos) {
+                                gene_id = gene_id.substr(1, gene_idx-1);
+                        }
+                        else {
+                                gene_id = gene_id.substr(1, gene_id.length()-1);
+                        }
 			records.insert(make_pair(gene_id, record(gene, gene.length())));			
 		}
 	}
