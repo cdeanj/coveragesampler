@@ -11,8 +11,11 @@ public:
 	inline std::string get_gene() const { return _gene; }
 	inline int get_base_hits() const { return static_cast<int>(count(_base_hits.begin(), _base_hits.end(), 1)); }
 	inline int gene_hits() const { return _gene_hits; }
+	inline void update_gene_hits() { _gene_hits++; }
 	inline void reset_base_hits() { _base_hits.clear(); }
 	inline void reset_gene_hits() { _gene_hits = 0; }
+	double coverage();
+							
 	
 
         std::vector<bool> _base_hits;

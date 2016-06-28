@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include "record.hpp"
 #include "fasta_reader.hpp"
 
@@ -15,6 +16,7 @@ std::map<std::string, record> fasta_reader::read() {
 		if(gene_id[0] == '>') {
 			getline(ifs, gene);
 			gene_id = gene_id.substr(1,gene_id.length()-1);
+			std::cout << gene_id << std::endl;
 			records.insert(make_pair(gene_id, record(gene, gene.length())));			
 		}
 	}

@@ -56,7 +56,7 @@ namespace utility {
 		}
 		a->flag = atoi(parts[1].c_str());
 		a->pos = atoi(parts[3].c_str());
-		a->rname = parts[3];
+		a->rname = parts[2];
 		a->cigar = get_cigar_ops(parts[5]);
 		a->seq = parts[9];
 	}

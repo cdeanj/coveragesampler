@@ -20,7 +20,7 @@ int main(const int argc, const char *argv[]) {
 	args = parse_command_line(argc, argv);
 
 	fasta_reader fr(args.amr_fp);
-	map<string, struct record> records = fr.read();
+	map<string, record> records = fr.read();
 
 	sam_reader sr(args.sam_fp);
 	vector<struct alignment> alignments = sr.read();
@@ -28,9 +28,7 @@ int main(const int argc, const char *argv[]) {
 	sam_ratio ratio(args);
 	ratio.generate_samples(records, alignments);
 
-	//std::cout << alignments.size() << std::endl;
-	//cout << records.size() << endl;
-
+	//cout << records.find("chr2:172936693-172938111")->second.get_gene() << endl;
 
 	return 0;
 }
