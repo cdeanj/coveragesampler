@@ -15,8 +15,4 @@ private:
 	std::string _fp;
 };
 
-
-
-
-
 #endif // FASTA_READER_H
