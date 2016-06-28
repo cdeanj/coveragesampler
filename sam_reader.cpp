@@ -1,6 +1,7 @@
 #include "sam_reader.hpp"
 #include "alignment.hpp"
 
+#include <iostream>
 #include <string>
 #include <stdlib.h>
 #include <vector>

@@ -57,14 +57,14 @@ void sam_ratio::analyze_coverage(record &rec, const alignment &al) {
 		switch(operation) {
                         case 'M':
                                 for(int i = start; i < stop; i++) {
-                                        rec._base_hits[i] = 1;
+                                        rec._base_hits[i] = true;
                                         pos_in_gene++;
 					pos_in_read++;
                                 }
                                 break;
                         case '=':
                                 for(int i = start; i < stop; i++) {
-                                        rec._base_hits[i] = 1;
+                                        rec._base_hits[i] = true;
                                         pos_in_gene++;
                                         pos_in_read++;
                                 }
