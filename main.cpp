@@ -19,7 +19,7 @@ int main(const int argc, const char *argv[]) {
 	struct cmd_args args;
 	args = parse_command_line(argc, argv);
 
-	fasta_reader fr(args.amr_fp);
+	fasta_reader fr(args.ref_fp);
 	map<string, record> records = fr.read();
 
 	sam_reader sr(args.sam_fp);

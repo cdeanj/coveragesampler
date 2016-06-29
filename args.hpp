@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 struct cmd_args {
-	std::string amr_fp;
+	std::string ref_fp;
 	std::string sam_fp;
 	std::string out_fp;
 	int threshold;
@@ -22,7 +22,7 @@ static void usage() {
         fprintf(stderr, "Contact: Chris Dean <cdean11@rams.colostate.edu\n\n");
         fprintf(stderr, "Usage: csa [options]\n\n");
         fprintf(stderr, "Options:\n\n");
-        fprintf(stderr, "    -amr_fp    STR/FILE		fasta file path\n");
+        fprintf(stderr, "    -ref_fp    STR/FILE		fasta file path\n");
         fprintf(stderr, "    -sam_fp    STR/FILE		sam file path\n");
         fprintf(stderr, "    -min       INT		starting sample level\n");
         fprintf(stderr, "    -max       INT		ending sample level\n");
@@ -38,8 +38,8 @@ inline parse_command_line(const int argc, const char *argv[]) {
 	std::vector<std::string> args(argv, argv + argc);
 
         for(int i = 1; i < argc; i++) {
-                if(args[i].compare("-amr_fp") == 0)
-                        arg.amr_fp = args[++i];
+                if(args[i].compare("-ref_fp") == 0)
+                        arg.ref_fp = args[++i];
                 else if(args[i].compare("-sam_fp") == 0)
                         arg.sam_fp = args[++i];
                 else if(args[i].compare("-out_fp") == 0)
