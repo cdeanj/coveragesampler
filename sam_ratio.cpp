@@ -116,6 +116,10 @@ void sam_ratio::generate_samples(std::map<std::string, record> &records, const s
 			std::vector<int> chosen(sequence.begin(), sequence.begin()+sample_size);
 			for(int k = 0; k < chosen.size(); k++) {
 				std::string rname = alignments[chosen[k]].rname;
+				auto it = records.find(rname);
+				if(it == records.end()) {
+					continue;
+				}
 				analyze_coverage(records.find(rname)->second, alignments[chosen[k]]);
 			}
 			write_results(records, i, j+1);
