@@ -105,8 +105,6 @@ void sam_ratio::generate_samples(std::map<std::string, record> &records, const s
 	std::vector<int> sequence(alignment_count);
 	std::iota(sequence.begin(), sequence.end(), 0);
 
-	assert(alignments.size() > 0);
-
 	write_header();
 
 	for(int i = args.min; i <= args.max; i += args.skip) {
