@@ -13,7 +13,7 @@
 sam_ratio::sam_ratio(struct cmd_args arguments) : args(arguments) {}
 
 void sam_ratio::write_header() {
-	std::ofstream ofs(args.out_fp);
+	std::ofstream ofs(args.out_fp, std::ofstream::app);
 	ofs << "Level\tIteration\tGene Id\tGene Fraction\tHits" << '\n';
 	ofs.close();
 }
