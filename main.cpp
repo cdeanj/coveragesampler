@@ -2,17 +2,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 
 #include "fasta_reader.hpp"
 #include "sam_reader.hpp"
-#include "resistome.hpp"
+#include "sam_ratio.hpp"
 #include "args.hpp"
 
 using namespace std;
 
 int main(const int argc, const char *argv[]) {
-	if(argc != 9) {
+	if(argc != 17) {
 		usage();
 		exit(EXIT_FAILURE);
 	}
@@ -26,13 +25,8 @@ int main(const int argc, const char *argv[]) {
 	sam_reader sr(args.sam_fp);
 	vector<struct alignment> alignments = sr.read();
 
-	annotation_reader ar(args.annot_fp);
-	map<string, annotation_fields> annotations = ar.read();
-
-	resistome res;
-	res.process_gene_level(records, alignments);
-	res.process_resistome(records, annotations);
-	res.write_resistome(args.prefix, utility::samplename(args.sam_fp), records);
+	sam_ratio ratio(args);
+	ratio.generate_samples(records, alignments);
 	
 	return 0;
 }

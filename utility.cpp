@@ -75,21 +75,4 @@ namespace utility {
 		}
 		return vp;
 	}
-
-	std::string basename(const std::string &fp) {
-		std::size_t found = fp.find_last_of("/");
-		if(found != std::string::npos) {
-			return fp.substr(found+1);
-		}
-		return fp;
-	}
-
-	std::string samplename(const std::string &fp) {
-		std::string base = basename(fp);
-		std::size_t found = base.find_last_of(".");
-		if(found != std::string::npos) {
-			return base.substr(0,found);
-		}
-		return fp;	
-	}
 }
