@@ -11,7 +11,8 @@ namespace utility {
 	bool is_good_flag(const int flag);
 	bool is_good_pos(const int pos);
 
-	int rando(const int i);
+	std::string basename(const std::string &fp);
+	std::string samplename(const std::string &fp);
 
 	void init_alignment(struct alignment *a, const std::string &al);
 	std::vector<std::pair<int,char> > get_cigar_ops(const std::string &cigar);
