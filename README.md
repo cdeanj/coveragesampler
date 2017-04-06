@@ -13,14 +13,14 @@ Usage: csa [options]
 
 Options:
 
-    -ref_fp    STR/FILE	    ref file path
-    -sam_fp    STR/FILE	    sam file path
-    -min       INT      	starting sample level
-    -max       INT	        ending sample level
-    -skip      INT	        amount of sample levels to skip
-    -t         INT	        gene fraction threshold
-    -samples   INT	        iterations per sample level
-    -out_fp    STR/FILE	    output file path
+    -ref_fp    STR/FILE     ref file path
+    -sam_fp    STR/FILE     sam file path
+    -min       INT          starting sample level
+    -max       INT          ending sample level
+    -skip      INT          amount of sample levels to skip
+    -t         INT          gene fraction threshold
+    -samples   INT          iterations per sample level
+    -out_fp    STR/FILE     output file path
 
 #### Output
 
