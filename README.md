@@ -1,14 +1,20 @@
-Coverage Sampler: A simple tool for calculating the amount of a gene that is covered by a sample of alignments.
+Overview
+========
 
-#### Installation
+A simple tool for calculating the amount of a gene that is covered by a sample of alignments.
+
+Installation
+============
 ```
-git clone https://github.com/cdeanj/coverage_sampler
-cd coverage_sampler
+git clone https://github.com/cdeanj/coveragesampler
+cd coveragesampler
 make
 ./csa
 ```
 
-#### Usage
+Usage
+=====
+
 Usage: csa [options]
 
 Options:
@@ -22,7 +28,8 @@ Options:
     -samples   INT          iterations per sample level
     -out_fp    STR/FILE     output file path
 
-#### Output
+Output
+======
 
 The output is a tab delimited text file with five columns
 ```
