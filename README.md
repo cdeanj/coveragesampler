@@ -19,7 +19,7 @@ Usage: csa [options]
 
 Options:
 
-    -ref_fp    STR/FILE     ref file path
+    -ref_fp    STR/FILE     ref file path (all sequences must be on a single line -- no multi-line FASTAs)
     -sam_fp    STR/FILE     sam file path
     -min       INT          starting sample level
     -max       INT          ending sample level
