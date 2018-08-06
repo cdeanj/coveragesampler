@@ -39,7 +39,6 @@ void reset(std::map<std::string,record> &records) {
 void sam_ratio::analyze_coverage(record &rec, const alignment &al) {
 	rec.update_gene_hits();
 
-	int pos_in_read = 0;
 	int pos_in_gene = al.pos-1;
 
 	int gene_length = rec.get_gene().length();
@@ -50,23 +49,23 @@ void sam_ratio::analyze_coverage(record &rec, const alignment &al) {
 		int start = pos_in_gene;
 		int stop = start + occurrence;
 
-		if(stop > gene_length) {
-			stop = gene_length;
-		}
-
 		switch(operation) {
                         case 'M':
                                 for(int i = start; i < stop; i++) {
                                         rec._base_hits[i] = 1;
                                         pos_in_gene++;
-					pos_in_read++;
                                 }
                                 break;
                         case '=':
                                 for(int i = start; i < stop; i++) {
                                         rec._base_hits[i] = 1;
                                         pos_in_gene++;
-                                        pos_in_read++;
+                                }
+                                break;
+			case 'X':
+                                for(int i = start; i < stop; i++) {
+                                        rec._base_hits[i] = 1;
+                                        pos_in_gene++;
                                 }
                                 break;
                         case 'D':
@@ -76,21 +75,12 @@ void sam_ratio::analyze_coverage(record &rec, const alignment &al) {
                                 pos_in_gene += occurrence;
                                 break;
                         case 'S':
-                                pos_in_read += occurrence;
                                 break;
                         case 'I':
-                                pos_in_read += occurrence;
-                                pos_in_gene += occurrence;
                                 break;
                         case 'H':
                                 break;
                         case 'P':
-                                pos_in_gene += occurrence;
-                                pos_in_read += occurrence;
-                                break;
-                        case 'X':
-                                pos_in_gene += occurrence;
-                                pos_in_read += occurrence;
                                 break;
                         default:
                                 break;
